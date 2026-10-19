@@ -1,0 +1,29 @@
+# Залежності
+node_modules/
+
+# Результат компіляції
+dist/
+
+# Логи
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Змінні середовища та секрети
+.env
+.env.production
+
+# Системні файли ОС
+.DS_Store
+Thumbs.db
+
+# Кеш редакторів коду
+.vscode/
+.idea/
+
+
+*.tsbuildinfo
