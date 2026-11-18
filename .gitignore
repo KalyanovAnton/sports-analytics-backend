@@ -27,3 +27,9 @@ Thumbs.db
 
 
 *.tsbuildinfo
+/src/generated/prisma
+
+
+.agents/
+.claude/
+.windsurf/

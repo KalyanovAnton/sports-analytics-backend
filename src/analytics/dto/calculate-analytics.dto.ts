@@ -6,15 +6,10 @@ export class UserProfileDto {
   @IsNumber()
   weightKg: number;
 
-  @IsNumber()
-  heightCm: number;
 
   @IsNumber()
   age: number;
 
-  @IsOptional()
-  @IsNumber()
-  muscleMassKg?: number;
 }
 
 export class RawWorkoutDto {

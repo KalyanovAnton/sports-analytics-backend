@@ -1,9 +1,7 @@
 
 export interface UserProfile {
-  weightKg: number;      // Вага у кг (наприклад, 75)
-  heightCm: number;      // Зріст у см (наприклад, 180)
+  weightKg: number;      // Вага у кг
   age: number;           // Вік
-  muscleMassKg?: number; // М'язова маса у кг (необов'язково)
 }
 
 export interface RawWorkout {

@@ -3,16 +3,15 @@ import { RawWorkout, CalculatedDayMetric, ReadinessAssessment, UserProfile } fro
 
 @Injectable()
 export class AnalyticsService {
-  /**
-   * Обчислення HR max за формулою Танаки
-   */
+  
+  //  Обчислення HR max за формулою Танаки
+   
   private calculateMaxHR(age: number): number {
     return Math.round(208 - 0.7 * age);
   }
 
-  /**
-   * Індивідуальний розрахунок TSS з урахуванням профілю
-   */
+  //  розрахунок TSS
+  
   calculateTSS(workout: RawWorkout, profile: UserProfile): number {
     const maxHR = workout.maxHeartRate || this.calculateMaxHR(profile.age);
     const intensity = workout.avgHeartRate / maxHR;
@@ -25,9 +24,9 @@ export class AnalyticsService {
     return Math.round(tss);
   }
 
-  /**
-   * Розрахунок послідовності CTL, ATL та TSB
-   */
+
+    // Розрахунок послідовності CTL, ATL та TSB
+   
   calculateTrainingStressBalance(workouts: RawWorkout[], profile: UserProfile): CalculatedDayMetric[] {
     if (workouts.length === 0) return [];
 
@@ -75,9 +74,9 @@ export class AnalyticsService {
     return result;
   }
 
-  /**
-   * Оцінка готовності до IRONMAN у відсотках
-   */
+  
+  //  Оцінка готовності відсотках
+  
   assessIronmanReadiness(lastMetric: CalculatedDayMetric, profile: UserProfile): ReadinessAssessment {
     if (!lastMetric) {
       return {
@@ -105,14 +104,14 @@ export class AnalyticsService {
     // ГІЛКА 1: Якщо фітнес критично низький (наприклад, CTL < 30)
     if (ctl < 30) {
       formScore = 10;
-      status = 'Низький рівень базової підготовки ⚠️';
+      status = 'Низький рівень базової підготовки ';
       recommendation = `Ваш накопичений фітнес (CTL = ${ctl}) занадто низький для IRONMAN. Вам необхідно систематично тренуватися і нарощувати обсяги, а не відпочивати.`;
     } 
     // ГІЛКА 2: Якщо база набрана (CTL >= 30), оцінюємо свіжість за TSB
     else {
       if (tsb >= 15 && tsb <= 25) {
         formScore = 40;
-        status = 'Пік форми (Оптимально) 🎯';
+        status = 'Пік форми (Оптимально)';
         recommendation = 'Ваш організм ідеально відновлений і володіє достатнім фітнесом. Ви повністю готові до старту!';
       } else if (tsb > 5 && tsb < 15) {
         formScore = 30;
@@ -130,7 +129,7 @@ export class AnalyticsService {
         formScore = 0;
         status = 'Критична втома / Ризик перетренованості ⚠️';
         recommendation = 'Увага! Ваш показник TSB надто низький. Терміново зробіть розвантажувальні дні.';
-      } else { // tsb > 25
+      } else { tsb > 25
         formScore = 15;
         status = 'Втрата тонусу / Задовгий відпочинок';
         recommendation = 'Тривалий простій починає знижувати ваш накопичений фітнес. Проведіть кілька тонізуючих тренувань.';
